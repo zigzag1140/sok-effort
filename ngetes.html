@@ -46,7 +46,7 @@
             outline: none;
             transition: border-color 0.3s;
             background-color: white;
-            box-sizing: border-box; /* Tambahkan ini */
+            box-sizing: border-box;
         }
 
         .login-container input:focus {
@@ -63,7 +63,7 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
-            box-sizing: border-box; /* Tambahkan ini */
+            box-sizing: border-box;
         }
 
         .login-container button:hover {
@@ -102,6 +102,7 @@
             max-width: 400px;
             width: 100%;
             border: 1px solid #eee;
+            text-align: center;
         }
 
         .welcome-container h2 {
@@ -110,9 +111,31 @@
             color: white;
         }
 
+        .welcome-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            color: #ff6b81;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .welcome-container button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        /* Tombol Musik */
         .music-container {
-            position: absolute;
+            position: fixed;
             bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
         }
 
@@ -129,25 +152,6 @@
 
         .music-button:hover {
             background-color: #ff4757;
-            transform: scale(1.05);
-        }
-
-        .welcome-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: white;
-            color: #ff6b81;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            margin: 10px 0;
-            box-sizing: border-box; /* Tambahkan ini */
-        }
-
-        .welcome-container button:hover {
-            background-color: #f0f0f0;
             transform: scale(1.05);
         }
 
@@ -231,13 +235,13 @@
             <button onclick="showEnvelope()">Siap</button>
             <button onclick="showEnvelope()">Siap Banget</button>
         </div>
-        <div id="music-container" class="music-container hidden">
+        <!-- Tombol Musik di Bagian Bawah -->
+        <div id="music-container" class="music-container">
             <button class="music-button" onclick="playMusic()">Play Music</button>
-            <audio id="background-music" src="https://voca.ro/1c5we9jdtkv6"></audio>
+            <!-- Ganti sumber audio dengan file di laptop Anda -->
+            <audio id="background-music" src="C:\Users\Lenovo\Downloads\hbd.mp3" loop></audio>
         </div>
     </div>
-
- 
 
     <!-- Halaman Surat Cinta -->
     <div id="message-page" class="hidden">
