@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulang Tahun Spesial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        /* Halaman Login */
+        .login-container {
+            background-color: #ff6b81;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            background-color: white;
+            box-sizing: border-box; /* Tambahkan ini */
+        }
+
+        .login-container input:focus {
+            border-color: #ff4757;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            color: #ff6b81;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-sizing: border-box; /* Tambahkan ini */
+        }
+
+        .login-container button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .forgot-password:hover {
+            color: #f0f0f0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .clue {
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+        }
+
+        /* Halaman Welcome */
+        .welcome-container {
+            background-color: #ff6b81;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid #eee;
+        }
+
+        .welcome-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .music-container {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+        }
+
+        .music-button {
+            padding: 12px 20px;
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .music-button:hover {
+            background-color: #ff4757;
+            transform: scale(1.05);
+        }
+
+        .welcome-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            color: #ff6b81;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px 0;
+            box-sizing: border-box; /* Tambahkan ini */
+        }
+
+        .welcome-container button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        /* Halaman Surat Cinta */
+        #message-container {
+            background-color: #ffd1dc;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, top 1s ease-in-out;
+            overflow-y: auto;
+            max-height: 80vh;
+            text-align: center;
+        }
+
+        #message-container.visible {
+            opacity: 1;
+        }
+
+        #message {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .continue-link {
+            font-size: 14px;
+            color: #ff6b81;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .continue-link:hover {
+            color: #ff4757;
+        }
+
+        .heart-container {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: top 1s ease-in-out;
+        }
+
+        .fa-heart {
+            color: #ff6b81;
+            font-size: 48px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .fa-heart:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Halaman Login -->
+    <div id="login-page">
+        <div class="login-container">
+            <h2>Login</h2>
+            <input type="password" id="password" placeholder="Masukkan Password">
+            <button onclick="checkPassword()">Masuk</button>
+            <div class="forgot-password" onclick="showClue()">Lupa Password?</div>
+            <div id="clue" class="clue hidden">Clue: DDMMYYYY</div>
+        </div>
+    </div>
+
+    <!-- Halaman Welcome -->
+    <div id="welcome-page" class="hidden">
+        <div class="welcome-container">
+            <h2>Apa kamu siap?</h2>
+            <button onclick="showEnvelope()">Siap</button>
+            <button onclick="showEnvelope()">Siap Banget</button>
+        </div>
+        <div id="music-container" class="music-container hidden">
+            <button class="music-button" onclick="playMusic()">Play Music</button>
+            <audio id="background-music" src="https://voca.ro/1c5we9jdtkv6"></audio>
+        </div>
+    </div>
+
+ 
+
+    <!-- Halaman Surat Cinta -->
+    <div id="message-page" class="hidden">
+        <div class="flex flex-col items-center">
+            <div id="message-container" class="hidden">
+                <article id="message">
+                    Untuk Ria,<br>
+                    Ndk tau mau bilang apa, intinya hbd ya.
+                </article>
+                <div class="continue-link" onclick="window.open('https://berita.99.co/contoh-ucapan-selamat-ulang-tahun/', '_blank')">
+                    lanjutkan...
+                </div>
+            </div>
+            <div class="heart-container">
+                <i id="solid-heart" class="fa-solid fa-heart fa-beat"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk mengecek password
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === "15022005") {
+                // Langsung pindah ke halaman selanjutnya tanpa alert
+                document.getElementById('login-page').classList.add('hidden');
+                document.getElementById('welcome-page').classList.remove('hidden');
+            } else {
+                alert("Password salah! Coba lagi.");
+            }
+        }
+
+        // Fungsi untuk menampilkan clue
+        function showClue() {
+            document.getElementById('clue').classList.remove('hidden');
+        }
+
+        // Fungsi untuk menampilkan halaman amplop
+        function showEnvelope() {
+            document.getElementById('welcome-page').classList.add('hidden');
+            document.getElementById('message-page').classList.remove('hidden');
+        }
+
+        function playMusic() {
+            const music = document.getElementById('background-music');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        // Fungsi untuk menampilkan pesan
+        function showMessage() {
+            const messageContainer = document.getElementById('message-container');
+            const heartIcon = document.getElementById('solid-heart');
+            const heartContainer = document.querySelector('.heart-container');
+
+            messageContainer.classList.remove('hidden');
+            setTimeout(() => messageContainer.classList.add('visible'), 10);
+
+            heartContainer.style.top = 'calc(50% + 100px)';
+            heartIcon.style.pointerEvents = 'none';
+        }
+
+        // Event listener untuk ikon hati
+        document.getElementById('solid-heart').addEventListener('click', showMessage);
+    </script>
+</body>
+</html>
